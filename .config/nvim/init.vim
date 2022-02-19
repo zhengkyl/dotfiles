@@ -14,7 +14,7 @@ call plug#begin(stdpath('data') . '/plugged')
 
 Plug 'joshdick/onedark.vim', Cond(!exists('g:vscode'))
 Plug 'vim-airline/vim-airline', Cond(!exists('g:vscode'))
-Plug 'preservim/nerdtree', Cond(!exists('g:vscode'))
+"Plug 'preservim/nerdtree', Cond(!exists('g:vscode'))
 Plug 'easymotion/vim-easymotion', Cond(!exists('g:vscode'))
 
 Plug 'asvetliakov/vim-easymotion', Cond(exists('g:vscode'), { 'as': 'vsc-easymotion' })
@@ -50,8 +50,8 @@ if !exists('g:vscode')
 	colorscheme onedark
 	syntax on
 	set number
-	set relativenumber
+	"set relativenumber
 	"ESC + moves cursor after edit instead of before
-	inoremap jk <c-c>`^
-	nnoremap <Tab> :NERDTreeToggle<CR>
+	"inoremap jk <c-c>`^
+	"nnoremap <Tab> :NERDTreeToggle<CR>
 endif
