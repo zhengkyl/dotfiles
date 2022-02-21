@@ -1,9 +1,3 @@
-if [ ! -S ~/.ssh/ssh_auth_sock ]; then
-  eval `ssh-agent`
-  ln -sf "$SSH_AUTH_SOCK" ~/.ssh/ssh_auth_sock
-fi
-export SSH_AUTH_SOCK=~/.ssh/ssh_auth_sock
-ssh-add -l > /dev/null || ssh-add
 
 export GPG_TTY=$TTY # use $(tty) if not in zsh
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
@@ -87,7 +81,10 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 plugins=(
 git
 zsh-vi-mode
+ssh-agent
 )
+
+zstyle :omz:plugins:ssh-agent lazy yes # Enter password at first use
 
 source $ZSH/oh-my-zsh.sh
 
