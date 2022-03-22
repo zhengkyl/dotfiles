@@ -23,7 +23,7 @@ Plug 'asvetliakov/vim-easymotion', Cond(exists('g:vscode'), { 'as': 'vsc-easymot
 Plug 'tpope/vim-surround'
 
 call plug#end()
-
+inoremap <Esc> <Esc>`^
 nnoremap <SPACE> <Nop>
 
 let mapleader = " "
