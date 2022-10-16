@@ -26,6 +26,10 @@ call plug#end()
 inoremap <Esc> <Esc>`^
 nnoremap <SPACE> <Nop>
 
+" Unmap join because I always intend j
+nnoremap J j
+vnoremap J j
+
 let mapleader = " "
 "let lowercase match upper, but not otherway arround
 let g:EasyMotion_smartcase = 1 
@@ -48,7 +52,7 @@ set tabstop=2
 set shiftwidth=2
 set expandtab
 "super glitchy, causes nvim to hang
-"set clipboard=unnamedplus
+set clipboard=unnamedplus
 
 if !exists('g:vscode')
   colorscheme onedark
