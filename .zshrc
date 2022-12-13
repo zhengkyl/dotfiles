@@ -1,7 +1,8 @@
+export GPG_TTY=$TTY # use $(tty) if not in zsh
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
-export GPG_TTY=$TTY # use $(tty) if not in zsh
 
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
@@ -120,10 +121,21 @@ alias vi='nvim.appimage'
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-export PATH=$PATH:/usr/local/go/bin:/home/zhengkyl/go/bin
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+
+export FLYCTL_INSTALL="/home/zhengkyl/.fly"
+
+# zsh thing
+path=(
+  $path
+  /usr/local/go/bin:/home/zhengkyl/go/bin:\
+  $HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:\
+  $FLYCTL_INSTALL/bin
+)
+
+# uncomment if you ever decide to try haskell again
+# [ -f "/home/zhengkyl/.ghcup/env" ] && source "/home/zhengkyl/.ghcup/env" # ghcup-env

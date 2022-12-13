@@ -52,7 +52,7 @@ set tabstop=2
 set shiftwidth=2
 set expandtab
 "super glitchy, causes nvim to hang
-set clipboard=unnamedplus
+"set clipboard=unnamedplus
 
 if !exists('g:vscode')
   colorscheme onedark
