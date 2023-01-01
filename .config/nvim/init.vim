@@ -35,7 +35,7 @@ vnoremap J j
 nnoremap d "_d
 xnoremap d "_d
 
-" Cut takes an extra key
+" Intentionally cut
 nnoremap <leader>d d
 xnoremap <leader>d d
 
@@ -46,14 +46,10 @@ map <silent> w <Plug>CamelCaseMotion_w
 map <silent> ge <Plug>CamelCaseMotion_ge
 sunmap w
 sunmap ge
+
 " CamelCaseMotion_ie does what unmodified iw does on a single word
-omap <silent> iw <Plug>CamelCaseMotion_ie
-" xmap <silent> iw <Plug>CamelCaseMotion_ie
-
-" ie instead of iw, b/c die :)
-onoremap ie iw
-" xnoremap ie iw
-
+omap <silent> ie <Plug>CamelCaseMotion_ie
+xmap <silent> ie <Plug>CamelCaseMotion_ie
 
 
 set showcmd
