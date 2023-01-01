@@ -16,43 +16,56 @@ call plug#begin(stdpath('data') . '/plugged')
 
 Plug 'joshdick/onedark.vim', Cond(!exists('g:vscode'))
 Plug 'vim-airline/vim-airline', Cond(!exists('g:vscode'))
-Plug 'easymotion/vim-easymotion', Cond(!exists('g:vscode'))
-
-Plug 'asvetliakov/vim-easymotion', Cond(exists('g:vscode'), { 'as': 'vsc-easymotion' })
-
 Plug 'tpope/vim-surround'
+Plug 'ggandor/leap.nvim'
+Plug 'bkad/CamelCaseMotion'
 
 call plug#end()
+
 inoremap <Esc> <Esc>`^
+
 nnoremap <SPACE> <Nop>
+let mapleader = " "
 
 " Unmap join because I always intend j
 nnoremap J j
 vnoremap J j
 
-let mapleader = " "
-"let lowercase match upper, but not otherway arround
-let g:EasyMotion_smartcase = 1 
-map <leader> <Plug>(easymotion-prefix)
-""map <leader>e <Plug>(easymotion-bd-e)
-""map <leader>l <Plug>(easymotion-bd-jk)
-map <leader>f <Plug>(easymotion-s)
-map <leader>s <Plug>(easymotion-f)
-map <leader>S <Plug>(easymotion-F)
-
 " Delete instead of cut
-nnoremap <leader>d "_d
-xnoremap <leader>d "_d
+nnoremap d "_d
+xnoremap d "_d
+
+" Cut takes an extra key
+nnoremap <leader>d d
+xnoremap <leader>d d
 
 xmap s	<Plug>VSurround
+
+" CamelCase and snake_case aware w and ge
+map <silent> w <Plug>CamelCaseMotion_w
+map <silent> ge <Plug>CamelCaseMotion_ge
+sunmap w
+sunmap ge
+" CamelCaseMotion_ie does what unmodified iw does on a single word
+omap <silent> iw <Plug>CamelCaseMotion_ie
+" xmap <silent> iw <Plug>CamelCaseMotion_ie
+
+" ie instead of iw, b/c die :)
+onoremap ie iw
+" xnoremap ie iw
+
+
 
 set showcmd
 set whichwrap+=h,l
 set tabstop=2
 set shiftwidth=2
 set expandtab
+
 "super glitchy, causes nvim to hang
 "set clipboard=unnamedplus
+
+lua require('leap').add_default_mappings()
 
 if !exists('g:vscode')
   colorscheme onedark
