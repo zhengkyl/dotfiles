@@ -80,6 +80,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
+docker
 git
 zsh-vi-mode
 ssh-agent
@@ -118,6 +119,7 @@ source $ZSH/oh-my-zsh.sh
 alias dot='/usr/bin/git --git-dir=$HOME/dotfiles/.git/ --work-tree=$HOME'
 alias nvim='nvim.appimage'
 alias vi='nvim.appimage'
+alias ddia='nvim.appimage ~/fd/diary/`date -u +%Y-%m-%d`.md'
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
@@ -129,13 +131,29 @@ export NVM_DIR="$HOME/.nvm"
 
 export FLYCTL_INSTALL="/home/zhengkyl/.fly"
 
+# asdf stuff
+. "$HOME/.asdf/asdf.sh"
+# append completions to fpath
+fpath=(${ASDF_DIR}/completions $fpath)
+# initialise completions with ZSH's compinit
+autoload -Uz compinit && compinit
+
 # zsh thing
 path=(
   $path
   /usr/local/go/bin:/home/zhengkyl/go/bin:\
   $HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:\
   $FLYCTL_INSTALL/bin
+  $HOME/.local/bin
 )
 
 # uncomment if you ever decide to try haskell again
 # [ -f "/home/zhengkyl/.ghcup/env" ] && source "/home/zhengkyl/.ghcup/env" # ghcup-env
+
+# pnpm
+export PNPM_HOME="/home/zhengkyl/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end

@@ -27,17 +27,8 @@ inoremap <Esc> <Esc>`^
 nnoremap <SPACE> <Nop>
 let mapleader = " "
 
-" Unmap join because I always intend j
-nnoremap J j
-vnoremap J j
-
-" Delete instead of cut
-nnoremap d "_d
-xnoremap d "_d
-
-" Intentionally cut
-nnoremap <leader>d d
-xnoremap <leader>d d
+xnoremap p P
+xnoremap P p
 
 xmap s	<Plug>VSurround
 
@@ -48,9 +39,8 @@ sunmap w
 sunmap ge
 
 " CamelCaseMotion_ie does what unmodified iw does on a single word
-omap <silent> ie <Plug>CamelCaseMotion_ie
-xmap <silent> ie <Plug>CamelCaseMotion_ie
-
+omap <silent> iw <Plug>CamelCaseMotion_ie
+xmap <silent> iw <Plug>CamelCaseMotion_ie
 
 set showcmd
 set whichwrap+=h,l
