@@ -2,6 +2,7 @@
 # export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 path=(
   $path
+  $HOME/.local/bin
   /opt/nvim-linux-x86_64/bin
 )
 
@@ -66,7 +67,10 @@ fi
 
 # For a full list of active aliases, run `alias`.
 alias vi="nvim"
+
 alias ni="pnpm i"
 alias nr="pnpm run"
 alias nun="pnpm rm"
 alias nlx="pnpm dlx"
+
+alias dot='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME'
